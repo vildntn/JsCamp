@@ -46,7 +46,7 @@ findPrime(2,5,8,21, 13)
 //------------Friend numbers or not-------------------------
 
 let friendNumbers=(s1,s2)=>{
-    if(posDivisors(s1)==s2 || posDivisors(s2)==s1){
+    if(posDivisors(s1)==s2 && posDivisors(s2)==s1){
         console.log(`${s1} and ${s2} are friend numbers`)
     }
     else{
