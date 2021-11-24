@@ -20,9 +20,10 @@ export default class CustomerService {
         this.validator.checkValidityForErrors(user,this.requiredFields)
       ) {
         this.customers.push(user);
-        return new SuccessResult("Added all customers from user data.")
+       
       }
     }
+    return new SuccessResult("Added all customers from user data.")
   }
 
   addCustomer(customer) {
@@ -58,7 +59,7 @@ export default class CustomerService {
 
   //This method has been written to make it more understandable what is done.
   checkCustomerTypeIsTrue(customer) {
-    return this.validator.compareTo(this.type, customer.type) == 0? new SuccessResult(): new ErrorDataResult(customer,"This user can not be added.Wrong user type");
+    return this.validator.compareTo(this.type, customer.type) == 0
   }
 
 

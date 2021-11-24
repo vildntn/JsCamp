@@ -1,4 +1,5 @@
 import ErrorDataResult from "../core/results/errorDataResult.js";
+import ErrorResult from "../core/results/errorResult.js";
 import SuccessDataResult from "../core/results/successDataResult.js";
 import SuccessResult from "../core/results/successResult.js";
 import { users } from "../data/users.js";
@@ -18,9 +19,10 @@ export default class EmployeeService {
        this.validator.checkValidityForErrors(user,this.requiredFields)
       ) {
         this.employees.push(user);
-        return new SuccessResult("Added all employees from user data.")
+       
       }
     }
+    return new SuccessResult("Added all employees from user data.")
   }
   addEmployee(employee) {
     if (this.checkEmployeeTypeIsTrue(employee)) {
@@ -56,6 +58,7 @@ export default class EmployeeService {
 
    //This method has been written to make it more understandable what is done.
   checkEmployeeTypeIsTrue(employee) {
-  return (this.validator.compareTo(this.type,employee.type)==0)? new SuccessResult(): new ErrorDataResult(customer,"This user can not be added.Wrong user type");
-}
+    return this.validator.compareTo(this.type,employee.type)==0
+  }
+
 }
