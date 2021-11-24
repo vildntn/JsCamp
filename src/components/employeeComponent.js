@@ -1,15 +1,14 @@
 import { BaseLogger, ElasticLogger, MongoLogger } from "../crossCuttingConcerns/logging/logger.js"
 import Customer from "../models/customer.js"
 import EmployeeService from "../services/employeeService.js"
-import ValidityService from "../services/ValidityService.js"
+import Validator from "../validate/validator.js"
 
 
 console.log("Customer component yüklendi")
 
 let logger1 = new MongoLogger()
-let validityService=new ValidityService();
-
-let employeeService=new EmployeeService();
+let validator=new Validator()
+let employeeService=new EmployeeService(validator);
 
 console.log("--------------------------")
 
@@ -19,8 +18,8 @@ employeeToAdd1.type="employee"
  let employeeToAdd2=new Customer(1,"Mehmet","Çelik","İzmir",30, "45698721");
  employeeToAdd2.type="employee"
  employeeService.addEmployee(employeeToAdd1)
- employeeService.addEmployee(employeeToAdd1)
- (employeeToAdd2)
+ employeeService.addEmployee(employeeToAdd2)
+
 console.log("------------employees list---------------------")
  console.log(employeeService.getAllEmployees())
 
