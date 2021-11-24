@@ -56,6 +56,6 @@ export default class EmployeeService {
 
    //This method has been written to make it more understandable what is done.
   checkEmployeeTypeIsTrue(employee) {
-  return (this.validator.compareTo(this.type,employee.type)==0);
+  return (this.validator.compareTo(this.type,employee.type)==0)? new SuccessResult(): new ErrorDataResult(customer,"This user can not be added.Wrong user type");
 }
 }
